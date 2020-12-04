@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weibo.oasis.dao.UserDao">
+    <select id="all" parameterType="com.weibo.oasis.vo.search.SearchUserVO" resultType="com.weibo.oasis.po.UserPO">
+        select * from user where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="username != null">
+            <if test="username != ''" >
+                and username LIKE CONCAT('%', #{username}, '%')
+            </if>
+        </if>
+        <if test="email != null">
+            <if test="email != ''">
+                and email LIKE CONCAT('%', #{email}, '%')
+            </if>
+        </if>
+        <if test="phone != null">
+            <if test="phone != ''">
+                and phone LIKE CONCAT('%', #{phone}, '%')
+            </if>
+        </if>
+        <if test="status != null">
+            <if test="status != ''">
+                and status = #{status}
+            </if>
+        </if>
+        order by createTime desc
+    </select>
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.weibo.oasis.po.UserPO">
+        select * from user where id=#{id} limit 1
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from user where id = #{id}
+    </delete>
+
+    <insert id="create" parameterType="com.weibo.oasis.po.UserPO">
+        insert into user(username, password, phone, status, email)
+        values
+        (#{username}, #{password}, #{phone}, #{status}, #{email})
+
+    </insert>
+
+    <update id="update" parameterType="com.weibo.oasis.po.UserPO">
+        update user
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="findByUsername" parameterType="java.lang.String" resultType="com.weibo.oasis.po.UserPO">
+        select * from user where username = #{username} limit 1
+    </select>
+
+    <select id="findByPhone" parameterType="java.lang.String" resultType="com.weibo.oasis.po.UserPO">
+        select * from user where phone = #{phone} limit 1
+    </select>
+    <select id="findByEmail" parameterType="java.lang.String" resultType="com.weibo.oasis.po.UserPO">
+        select * from user where email = #{email} limit 1
+    </select>
+</mapper>

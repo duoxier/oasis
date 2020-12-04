@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weibo.oasis.dao.TokenDao">
+    <select id="findByUserId" parameterType="java.lang.Integer" resultType="com.weibo.oasis.po.TokenPO">
+        select * from user_token where userId=#{userId} limit 1
+    </select>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete from user_token where token = #{token}
+    </delete>
+
+    <insert id="create" parameterType="com.weibo.oasis.po.TokenPO">
+        insert into user_token(userId, token, expireTime)
+        values
+        (#{userId}, #{token}, #{expireTime})
+
+    </insert>
+
+    <update id="update" parameterType="com.weibo.oasis.po.TokenPO">
+        update user_token set token = #{token},expireTime = #{expireTime}
+        where userId = #{userId}
+    </update>
+
+    <select id="checkToken" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select userId
+        from user_token
+        where token = #{token}
+        and  expireTime >= now()
+    </select>
+
+
+</mapper>
