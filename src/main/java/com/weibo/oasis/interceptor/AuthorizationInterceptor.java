@@ -21,10 +21,12 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
         String token = request.getHeader("token");
-//        //获取请求url
-//        String url = request.getRequestURI();
-//        System.out.println("request url: "+url);
-
+        //获取请求url
+        String url = request.getRequestURI();
+        System.out.println("request url: "+url);
+        if (url.equals("/error")){
+            throw new NEException(ServiceError.NOT_FOUND);
+        }
         if (token == null){
             throw new NEException(ServiceError.TOKEN_ERROR);
         }

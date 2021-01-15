@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.weibo.oasis.dao.FileDao">
     <insert id="create" parameterType="com.weibo.oasis.po.FilePO">
-        insert into file(location, name, oldName)
+        insert into file(location, name, userId, oldName)
         values
-        (#{location}, #{name}, #{oldName})
+        (#{location}, #{name}, #{userId}, #{oldName})
     </insert>
 </mapper>

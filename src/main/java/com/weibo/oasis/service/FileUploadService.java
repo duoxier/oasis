@@ -19,7 +19,7 @@ public class FileUploadService {
     @Resource
     FileDao fileDao;
 
-    public RestResponse upload(MultipartFile file, String baseDir) {
+    public RestResponse upload(MultipartFile file, String baseDir, Integer userId) {
         try {
             String originalFilename = file.getOriginalFilename();
             if (originalFilename == null || "".equals(originalFilename)){
@@ -35,7 +35,7 @@ public class FileUploadService {
                 fileLocation = FileUploadUtils.upload(file);
             }
             filePO.setLocation(fileLocation);
-            System.out.println("location"+filePO.getLocation());
+            filePO.setUserId(userId);
             fileDao.create(filePO);
             return RestResponse.success();
         }catch (Exception e){

@@ -16,6 +16,7 @@ public enum ServiceError implements IError {
     TOKEN_ERROR("0010", "无效token"),
     TOKEN_EXPIRED("0011","用户登录已失效"),
     FILE_NAME_NULL("0012", "文件名不能为空"),
+    NOT_FOUND("404","请求路径非法"),
     USERNAME_NULL("9999","用户名不能为空")
     ;
 

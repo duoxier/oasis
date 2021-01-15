@@ -8,6 +8,7 @@ public class FilePO {
     private String location;
     private String name;
     private String oldName;
+    private Integer userId;
     private Date createTime;
     private Date updateTime;
 
@@ -41,6 +42,14 @@ public class FilePO {
 
     public void setOldName(String oldName) {
         this.oldName = oldName;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Date getCreateTime() {

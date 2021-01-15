@@ -21,8 +21,8 @@ public class FileUploadController {
 
     @ApiOperation("文件上传")
     @RequestMapping(value = "/files/uploads", method = RequestMethod.POST)
-    public RestResponse create(MultipartFile file){
-        fileUploadService.upload(file, "/usr/local/fileUploads");
+    public RestResponse create(MultipartFile file, Integer userId){
+        fileUploadService.upload(file, "/usr/local/fileUploads", userId);
         return RestResponse.success();
     }
 }
