@@ -49,7 +49,20 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry interceptorRegistry) {
         //拦截除开login的请求，其它都需要token
-        interceptorRegistry.addInterceptor(authorizationInterceptor).addPathPatterns("/**").excludePathPatterns("/**/login");
+        interceptorRegistry.addInterceptor(authorizationInterceptor).addPathPatterns("/**")
+//                .excludePathPatterns("/**/swagger-ui.html")
+//                .excludePathPatterns("/**/swagger-resources/**")
+                .excludePathPatterns("/swagger-ui.html")
+                .excludePathPatterns("/**/configuration/ui")
+                .excludePathPatterns("/**/swagger-resources")
+                .excludePathPatterns("/**/configuration/security")
+                .excludePathPatterns("/**/v2/api-docs")
+                .excludePathPatterns("/**/error")
+                .excludePathPatterns("/**/webjars/**")
+                .excludePathPatterns("/**/favicon.ico")
+                .excludePathPatterns("/**/login")
+
+        ;
 
     }
 
