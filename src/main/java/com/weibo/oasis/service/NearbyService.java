@@ -3,6 +3,7 @@ package com.weibo.oasis.service;
 import com.alibaba.fastjson.JSONObject;
 import com.ne.boot.common.exception.NEException;
 import com.weibo.oasis.RestResponse;
+import com.weibo.oasis.config.NearbyConfig;
 import com.weibo.oasis.error.ServiceError;
 import com.weibo.oasis.vo.WeiboPositionVO;
 import org.slf4j.Logger;
@@ -12,10 +13,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.*;
 
+import javax.annotation.Resource;
+
 @Service
 public class NearbyService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(NearbyService.class);
+
+    @Resource
+    private NearbyConfig nearbyConfig;
 
     public void weiboPosition(WeiboPositionVO vo){
         RestTemplate restTemplate = new RestTemplate();
@@ -33,7 +39,8 @@ public class NearbyService {
 
     public RestResponse clearViewer(String uid){
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://172.16.181.49:8888/nearby/clear-viewer?uid="+uid;
+        System.out.println("nearbyConfig clear-viewer"+nearbyConfig.getClear_viewer());
+        String url = nearbyConfig.getClear_viewer()+"?uid="+uid;
         Integer code = -1;
         String msg = null;
         try {
