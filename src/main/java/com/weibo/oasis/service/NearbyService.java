@@ -26,16 +26,12 @@ public class NearbyService {
     public void weiboPosition(WeiboPositionVO vo){
         RestTemplate restTemplate = new RestTemplate();
         try {
-            //http://i.api.weibo.cn/2/api/lbs/position.php?access_key=lvzhou20200709&uid=3280485153&deep=3&type=1
-            ResponseEntity<String > responseEntity =restTemplate.getForEntity("http://i.api.weibo.cn/2/api/lbs/position.php?access_key=lvzhou20200709&uid=3280485153&deep=3&type=1", String.class);
-            System.out.println("responseEntity : "+responseEntity);
+            System.out.println("responseEntity : ");
         }catch (Exception e ){
             LOGGER.error("NearbyService weiboPosition error {}", e);
             throw new NEException(ServiceError.OASIS_SERVICE_ERROR);
         }
     }
-
-
 
     public RestResponse clearViewer(String uid){
         RestTemplate restTemplate = new RestTemplate();
