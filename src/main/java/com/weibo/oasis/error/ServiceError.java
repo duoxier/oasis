@@ -18,6 +18,9 @@ public enum ServiceError implements IError {
     FILE_NAME_NULL("0012", "文件名不能为空"),
     UID_NULL("0013", "用户id不能为空"),
     NOT_FOUND("404","请求路径非法"),
+    //like
+    SID_NULL("405","动态id不能为空"),
+
     USERNAME_NULL("9999","用户名不能为空")
     ;
 
