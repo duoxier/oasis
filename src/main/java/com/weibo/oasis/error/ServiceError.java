@@ -20,6 +20,7 @@ public enum ServiceError implements IError {
     NOT_FOUND("404","请求路径非法"),
     //like
     SID_NULL("405","动态id不能为空"),
+    LOGOUT_ERROR("0014", "退出登录异常"),
 
     USERNAME_NULL("9999","用户名不能为空")
     ;

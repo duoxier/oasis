@@ -1,7 +1,6 @@
 package com.weibo.oasis.service;
 
 import com.ne.boot.common.entity.Page;
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.weibo.oasis.RestResponse;
 import com.weibo.oasis.dao.UserDao;
 import com.weibo.oasis.error.ServiceError;
