@@ -2,49 +2,49 @@ package com.weibo.oasis.po;
 
 public class TimelineUserPO {
 
-    private Integer cuid;
-    private Integer ouid;
-    private String cursor;
-    private String count;
-    private String version;
+    private Integer uid;
+    private String name;
+    private Integer followerCount;  //粉丝
+    private Integer followingCount; //关注
+    private String avatar; //头像
 
-    public Integer getCuid() {
-        return cuid;
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setCuid(Integer cuid) {
-        this.cuid = cuid;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
-    public Integer getOuid() {
-        return ouid;
+    public String getName() {
+        return name;
     }
 
-    public void setOuid(Integer ouid) {
-        this.ouid = ouid;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCursor() {
-        return cursor;
+    public Integer getFollowerCount() {
+        return followerCount;
     }
 
-    public void setCursor(String cursor) {
-        this.cursor = cursor;
+    public void setFollowerCount(Integer followerCount) {
+        this.followerCount = followerCount;
     }
 
-    public String getCount() {
-        return count;
+    public Integer getFollowingCount() {
+        return followingCount;
     }
 
-    public void setCount(String count) {
-        this.count = count;
+    public void setFollowingCount(Integer followingCount) {
+        this.followingCount = followingCount;
     }
 
-    public String getVersion() {
-        return version;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

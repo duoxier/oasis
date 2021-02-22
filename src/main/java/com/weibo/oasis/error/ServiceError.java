@@ -21,6 +21,7 @@ public enum ServiceError implements IError {
     //like
     SID_NULL("405","动态id不能为空"),
     LOGOUT_ERROR("0014", "退出登录异常"),
+    FOLLOW_NUM_ERROR("0015", "请输入1-10个关注数"),
 
     USERNAME_NULL("9999","用户名不能为空")
     ;

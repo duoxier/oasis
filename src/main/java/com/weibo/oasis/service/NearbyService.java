@@ -9,15 +9,13 @@ import com.weibo.oasis.po.WeiboPositionPO;
 import com.weibo.oasis.vo.WeiboPositionVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.*;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
+
 
 @Service
 public class NearbyService {
@@ -32,11 +30,8 @@ public class NearbyService {
         RestTemplate restTemplate = new RestTemplate();
         String url = nearbyConfig.getPosition();
         LOGGER.info("get weibo position url: {}", url);
-        Integer code = -1;
-        String msg = null;
         try {
             ResponseEntity<String> result = restTemplate.getForEntity(url+"?access_key="+vo.getAccess_key()+"&uid="+vo.getUid()+"&deep="+vo.getDeep()+"&type="+vo.getType(), String.class);
-            LOGGER.info("current is: {}", vo.getAccess_key());
             String body = result.getBody();
             HttpStatus statusCode =result.getStatusCode();
             JSONObject jsonObject = null;
