@@ -23,8 +23,10 @@ public class NearbyController {
     @ApiOperation("微博常用位置")
     @RequestMapping(value = "/nearby/positions", method = RequestMethod.GET)
     public RestResponse positions(WeiboPositionVO vo){
-        nearbyService.weiboPosition(vo);
-        return RestResponse.success();
+        if (vo.getUid().isEmpty()){
+            return RestResponse.error(ServiceError.UID_NULL);
+        }
+        return nearbyService.weiboPosition(vo);
     }
     @ApiOperation("清除位置缓存")
     @RequestMapping(value = "/nearby/clear_viewer", method = RequestMethod.GET)
