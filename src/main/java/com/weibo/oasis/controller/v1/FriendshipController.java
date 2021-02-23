@@ -21,9 +21,9 @@ public class FriendshipController {
     @Resource
     private FriendshipService friendshipService;
 
-    @ApiOperation("获取关注")
-    @RequestMapping(value = "/friendship/create", method = RequestMethod.GET)
-    public RestResponse positions(OperateFriendShipCreateVO vo){
+    @ApiOperation("添加关注")
+    @RequestMapping(value = "/friendship/follow/create", method = RequestMethod.GET)
+    public RestResponse followCreate(OperateFriendShipCreateVO vo){
         if (vo.getUid().isEmpty()){
             return RestResponse.error(ServiceError.UID_NULL);
         }
@@ -33,6 +33,21 @@ public class FriendshipController {
         if (vo.getFollowNum()<=0 || vo.getFollowNum() > 10){
             return RestResponse.error(ServiceError.FOLLOW_NUM_ERROR);
         }
-        return friendshipService.create(vo);
+        return friendshipService.followCreate(vo);
+    }
+
+    @ApiOperation("添加粉丝")
+    @RequestMapping(value = "/friendship/following/create", method = RequestMethod.GET)
+    public RestResponse followingCreate(OperateFriendShipCreateVO vo){
+        if (vo.getUid().isEmpty()){
+            return RestResponse.error(ServiceError.UID_NULL);
+        }
+        if (vo.getFollowNum() == null){
+            return RestResponse.error(ServiceError.FOLLOW_NUM_ERROR);
+        }
+        if (vo.getFollowNum()<=0 || vo.getFollowNum() > 10){
+            return RestResponse.error(ServiceError.FOLLOW_NUM_ERROR);
+        }
+        return friendshipService.followingCreate(vo);
     }
 }
